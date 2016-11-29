@@ -1,10 +1,12 @@
 # New additions to Excel beta
 
-Back in August of this year, we [announced](http://dev.office.com/blogs/power-your-apps-with-the-new-excel-rest-api) general availability of Excel REST API on Microsoft Graph. We are continually exploring opportunities to enable new scenarios and add functionality that will enable applications to build deeper and richer integration with Excel workbooks. We are happy to announce the addition of new APIs to Excel beta version. The highlights and the scenarios enabled are listed below. As with other releases, we are eager to hear your feedback. Do give this a try and let us know what you think!
+Back in August of this year, we [announced](http://dev.office.com/blogs/power-your-apps-with-the-new-excel-rest-api) general availability of Excel REST API on Microsoft Graph. We are continually exploring opportunities to enable new scenarios and add functionality that will enable applications to build deeper and richer integration with Excel workbooks. We are happy to announce the addition of new APIs to Excel beta version. The highlights and the scenarios enabled are listed below. As always we are eager to hear your feedback. Do give this a try and let us know what you think!
 
 The new APIs are available using the Microsoft Graph beta endpoint. You can access the new APIs for workbooks located in OneDrive for Business or in any Office 365 group as shown below:
 
-`https://graph.microsoft.com/beta/me/drive/root:/book.xlsx:/`
+`https://graph.microsoft.com/beta/me/drive/root:/book.xlsx:/workbook`
+
+Please refer to [Excel API documentation](https://graph.microsoft.io/en-us/docs/api-reference/v1.0/resources/excel) for an overview. 
 
 ## What's new
 
