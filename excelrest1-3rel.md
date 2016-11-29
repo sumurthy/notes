@@ -46,30 +46,43 @@ These new range APIs can be accessed using the syntax:
 `GET /{range-object}/{function-name}`. Example, `GET /workbook/workskeets/sheet1/usedRange/columnsAfter(count=2)`  
 
 **Note:** As always, it is a good practice to include the `Workbook-Session-Id` header if you are doing more than isolated read operations. This will ensure that the resource you may have created and modified can be accessed in the follow-up API. 
+Find more details on how to create a persisted session in our documentation. In short, 
 
-What to learn more?
+# create a persisted session
+```http
+POST .../workbook/CreateSession
+content-type: Application/Json 
+authorization: Bearer {access-token} 
+
+{ "persistChanges": true }
+```
+Response
+
+```http
+HTTP code: 201, Created
+content-type: application/json;odata.metadata
+
+{  
+"@odata.context": "https://graph.microsoft.com/v1.0/$metadata#microsoft.graph.sessionInfo",  
+"id": "{session-id}",  
+"persistChanges": true
+}
+```
+
+Usage
+
+The session ID returned from the CreateSession call is then passed as a header on subsequent API requests using the workbook-session-id HTTP header.
+
+```http
+GET .../workbook/Worksheets
+authorization: Bearer {access-token} 
+workbook-session-id: {session-id}
+```
+
+#### What to learn more?
 Excellent! Visit https://dev.office.com/excel/rest, where you’ll find documentation and code samples to help you get started. It only takes a few lines of code to set up a basic integration using our to-do list sample.
 
 Once you jump in, tell us what you think. Let us know your feedback on the API and documentation through GitHub and Stack Overflow, and make new feature suggestions on UserVoice.
 
 
 
-Note: Any request that modifies the workbook should be performed in a persisted session. Find more details on how to create a persisted session in our documentation.
-
-create a persisted session
-
-POST .../workbook/CreateSessioncontent-type: Application/Json authorization: Bearer {access-token} { "persistChanges": true }
-
-
-
-Response
-
-HTTP code: 201, Createdcontent-type: application/json;odata.metadata
-
-{  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#microsoft.graph.sessionInfo",  "id": "{session-id}",  "persistChanges": true}
-
-Usage
-
-The session ID returned from the CreateSession call is then passed as a header on subsequent API requests using the workbook-session-id HTTP header.
-
-GET .../workbook/Worksheetsauthorization: Bearer {access-token} workbook-session-id: {session-id}
