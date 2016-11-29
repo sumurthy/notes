@@ -17,8 +17,13 @@ Pivot table resource is now available on the `worksheet` resource. This will ena
 
 
 ### visibleView 
-Get the range visible from a filtered range. This is available on a given range via the action: `POST /range(adress='{address}')/visibleView`
+When a filter is applied on a table, often times it is usefult to know what values are visible (or selected from filter criteria). Until now, one had to go thorugh the underlying range and determine if the row is visible or not. This is cumbersome and hard to work when the range is fairly large. 
+Hence, we've added a new API to get the visible range on a filtered range. In order to get the visible view object, simply get the object on the underlying range as below:
+`GET /{range-object}/visibleView`
 
+If the visible range happens to be large, getting the entire resource may not be performant. In such a case, iterating over the rows would provide better experience. the `rows` relationship on visibleView allows just that - iterating over the visible range rows. 
+
+Access the rows collection using: `GET /{range-object}/visibleView/rows`
 
 ### New table resource properties
 
@@ -31,15 +36,16 @@ Gain insights into the structure of the Excel table with these new properties.
 * `showFilterButton`: Boolean; Indicates whether the filter buttons are visible at the top of each column header. Setting this is only allowed if the table contains a header row.
 
 ### New range functions 
-* `columnsAfter`: Gets a certain number of columns to the right of the given range.
-* `columnsBefore`: Gets a certain number of columns to the left of the given range.
-* `resizedRange`: Gets a range object similar to the current range object, but with its bottom-right corner expanded (or contracted) by some number of rows and columns.
-* `rowsAbove`: Gets a certain number of rows above a given range.
-* `rowsBelow`: Gets a certain number of rows below a given range.
+* `columnsAfter`: Gets a certain number of columns to the right of the given range. It takes in an optional count parameter. In general, use a positive number to create a range outside the current range. You can also use a negative number to create a range within the current range. The default value is 1.
+* `columnsBefore`: Gets a certain number of columns to the left of the given range. It takes in an optional count parameter. In general, use a positive number to create a range outside the current range. You can also use a negative number to create a range within the current range. The default value is 1.
+* `resizedRange`: Gets a range object similar to the current range object, but with its bottom-right corner expanded (or contracted) by some number of rows and columns. It accepts two parameters: deltaRows: The number of rows by which to expand the bottom-right corner, relative to the current range. Use a positive number to expand the range, or a negative number to decrease it. `deltaColumns`: The number of columnsby which to expand the bottom-right corner, relative to the current range. Use a positive number to expand the range, or a negative number to decrease it.
+* `rowsAbove`: Gets a certain number of rows above a given range. It accepts an optional count parameter. It specifies the number of rows to include in the resulting range. In general, use a positive number to create a range outside the current range. You can also use a negative number to create a range within the current range. The default value is 1.
+* `rowsBelow`: Gets a certain number of rows below a given range. It accepts an optional count parameter. It specifies the number of rows to include in the resulting range. In general, use a positive number to create a range outside the current range. You can also use a negative number to create a range within the current range. The default value is 1.
 
+These new range APIs can be accessed using the syntax: 
+`GET /{range-object}/{function-name}`. Example, `GET /workbook/workskeets/sheet1/usedRange/columnsAfter(count=2)`  
 
-
-
+**Note:** As always, it is a good practice to include the `Workbook-Session-Id` header if you are doing more than isolated read operations. This will ensure that the resource you may have created and modified can be accessed in the follow-up API. 
 
 What to learn more?
 Excellent! Visit https://dev.office.com/excel/rest, where you’ll find documentation and code samples to help you get started. It only takes a few lines of code to set up a basic integration using our to-do list sample.
