@@ -46,9 +46,10 @@ These new range APIs can be accessed using the syntax:
 `GET /{range-object}/{function-name}`. Example, `GET /workbook/workskeets/sheet1/usedRange/columnsAfter(count=2)`  
 
 **Note:** As always, it is a good practice to include the `Workbook-Session-Id` header if you are doing more than isolated read operations. This will ensure that the resource you may have created and modified can be accessed in the follow-up API. 
-Find more details on how to create a persisted session in our documentation. In short, 
+Find more details on how to create a persisted session in our documentation. In short:
 
-# create a persisted session
+Create a persisted session
+
 ```http
 POST .../workbook/CreateSession
 content-type: Application/Json 
