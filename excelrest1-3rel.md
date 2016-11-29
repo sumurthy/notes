@@ -19,9 +19,11 @@ Pivot table resource is now available on the `worksheet` resource. This will ena
 
 
 ### visibleView 
-When a filter is applied on a table, often times it is usefult to know what values are visible (or selected from filter criteria). Until now, one had to go thorugh the underlying range and determine if the row is visible or not. This is cumbersome and hard to work when the range is fairly large. 
+Represents the visible rows of the current range. When a filter is applied on a range, often times it is usefult to know what values are visible (or selected from filter criteria). Until now, one had to go thorugh the underlying range and determine if the row is visible or not. This is cumbersome and hard to work when the range is fairly large. 
 Hence, we've added a new API to get the visible range on a filtered range. In order to get the visible view object, simply get the object on the underlying range as below:
 `GET /{range-object}/visibleView`
+
+Visible view object comes with useful properties that represent the range such as cell addresses, column and row count, index, formulas, number format, values/text, and value types. 
 
 If the visible range happens to be large, getting the entire resource may not be performant. In such a case, iterating over the rows would provide better experience. the `rows` relationship on visibleView allows just that - iterating over the visible range rows. 
 
