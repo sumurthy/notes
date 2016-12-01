@@ -54,8 +54,6 @@ For example:
 
 Gain insights into the structure of the Excel table by using the following new properties: `highlightFirstColumn`, `highlightLastColumn`, `showBandedColumns`, `showBandedRows`, `showFilterButton`
 
->**Note:** We recommend that you include the `Workbook-Session-Id` header if you are doing more than isolated read operations. This will ensure that the resource you created and modified can be accessed in the follow-up API. For more details about how to create a persisted session, see our [documentation](https://graph.microsoft.io/en-us/docs/api-reference/v1.0/resources/excel). 
-
 #### Want to learn more?
 Excellent! Visit https://dev.office.com/excel/rest, <!-- LG: Not sure about linking to this landing page, as it provides much less detail than this blog post. ;) Maybe change the heading to "Ready to get started?" --> where you’ll find documentation and code samples to help you get started. It only takes a few lines of code to set up a basic integration using our to-do list sample. <!-- LG: Link directly to the sample? -->
 
