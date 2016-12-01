@@ -19,7 +19,7 @@ The pivot table collection is now available on the `worksheet` resource. To begi
 
 In the future, we'll look to add more pivot table functionality using the same resources.
 
-### Get visible rows on a filtered range
+### Visible rows on a filtered range
 The visibleView resource represents the visible rows of the current range. When a filter is applied on a range, it is often useful to know what values are visible (or selected from filter criteria). Previously, this required going through the underlying range to determine whether the row is visible or not. Such a procedure is cumbersome when the range is fairly large. Now, we've added a new API to get the visible range on a filtered range. 
 
 Applications can now apply a filter on a large table based on desired criteria and get easy access to filtered data. This feature will reduce the complexity involved in determining visible rows and take advantage of Excel's filtering capability. 
@@ -36,7 +36,7 @@ Access the rows collection using the following code.
 
 `GET /{range-object}/visibleView/rows`
 
-### New range functions 
+### New range manipulation functions 
 
 The following new range functions have been added. These functions reduce the complexity involved in determining the target range that the applications wishes to operate on.
 
