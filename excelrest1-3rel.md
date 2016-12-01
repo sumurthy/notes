@@ -10,7 +10,7 @@ For an overview of the Excel REST APIs, see [Working with Excel in Microsoft Gra
 
 ## What's new
 
-### Pivot Table
+### Pivot Table resource and refresh action
 The pivot table collection is now available on the `worksheet` resource. To begin with, this will enable developers to know about the pivot tables are available on a given workbook. This will also enable applications to refresh an individual pivot table or all pivot tables associated with a worksheet from the source data. Applications can take advantage of this feature by refreshing the pivot table remotely based on timing or other business criteria. 
 
 * Get pivotTable: Read properties of pivotTable object. Example, `GET /worksheets/{id or name}/pivotTables/{id}`
@@ -19,7 +19,7 @@ The pivot table collection is now available on the `worksheet` resource. To begi
 
 In the future, we'll look to add more pivot table functionality using the same resources.
 
-### visibleView 
+### Get visible rows on a filtered range
 The visibleView resource represents the visible rows of the current range. When a filter is applied on a range, it is often useful to know what values are visible (or selected from filter criteria). Previously, this required going through the underlying range to determine whether the row is visible or not. Such a procedure is cumbersome when the range is fairly large. Now, we've added a new API to get the visible range on a filtered range. 
 
 Applications can now apply a filter on a large table based on desired criteria and get easy access to filtered data. This feature will reduce the complexity involved in determining visible rows and take advantage of Excel's filtering capability. 
